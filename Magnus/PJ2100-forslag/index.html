@@ -1,3 +1,42 @@
+<?php
+require 'core/init.php';
+$general->logged_in_protect();
+
+if (empty($_POST) === false) {
+
+	$username = trim($_POST['username']);
+	$password = trim($_POST['password']);
+
+	if (empty($username) === true || empty($password) === true) {
+		$errors[] = 'trenger brukernavn og passord.';
+	} else if ($users->user_exists($username) === false) {
+		$errors[] = 'brukernavn finnes ikke.';
+	} else {
+		if (strlen($password) > 18) {
+			$errors[] = 'passordet må være kortere enn 18 tegn.';
+		}
+		$login = $users->login($username, $password);
+		if ($login === false) {
+			$errors[] = 'brukernavn og passord stemmer ikke';
+		}else {
+			$_SESSION['id'] =  $login;
+			header('Location: hjem.php');
+			exit();
+		}
+	}
+} 
+?>
+<!--
+no shit
+
+		<?php 
+
+		if(empty($errors) === false){
+			echo '<p>' . implode('</p><p>', $errors) . '</p>';	
+		}
+
+		?>-->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +47,20 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+<div id="topbar">
+        <form method="post" action="">
+			<h4>Brukernavn:</h4>
+			<input type="text" name="username">
+			<h4>Passord:</h4>
+			<input type="password" name="password">
+			<br>
+			<input type="submit" name="submit" value="logg inn">
+		</form>
+
+</div>
+
+
 <input id="toggle" type="checkbox" />
 <nav class="col-first">
 <label class="labeltekst" ><h2>Westerdals</h2></label>
