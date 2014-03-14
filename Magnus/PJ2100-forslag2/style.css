@@ -37,20 +37,35 @@ h2{
 	letter-spacing: 3px;
 }
 
+h3{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
+	color: rgb(150,150,150);
+	font-size: 15pt;
+	font-weight: 300;
+	text-transform: uppercase;
+	margin: 0;
+	padding-left: 10px;
+	letter-spacing: 3px;
+	text-align: center;
+}
+
 p{
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
 	color: white;
 	font-size: 13pt;
+	margin: 0px;
 }
 
-form{
-	padding-left: 13px;
+a{
+	text-decoration: none;
+	color: inherit;
+	transition: all 0.2s ease;
+	-webkit-transition: all 0.2s ease;
 }
 
 input{
 	border:none;
 	background-color: #ecf0f1;
-	padding: 0 20px;
 	transition: all 0.2s ease;
 	-webkit-transition: all 0.2s ease;
 	color: initial;
@@ -61,7 +76,7 @@ input{
 	text-indent: 0px;
 	text-shadow:none;
 	display: inline-block;
-	padding-left: 13px;
+	text-align: center;
 }
 
 input[type="text"], input[type="password"]{
@@ -72,12 +87,10 @@ input[type="text"], input[type="password"]{
 	height: 45px;
 	width: 225px;
 	margin-top: 5px;
-	text-align: center;
 }
 
 .submit{
 	height: 45px;
-	width: 110.5px;
 	margin-top:5px;
 	color: white;
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
@@ -86,18 +99,25 @@ input[type="text"], input[type="password"]{
 	font-weight: 300;
 }
 
-#loggInn{
-	background-color: #f1c40f;
+.rute{
+	width: 20%;
+	text-align: center;
+	display: inline-block;
 }
 
-#registrer{
-	background-color: #2980b9;
+.rute *{
+	margin-top: 20px;
 }
 
 #header {
 	max-width: 100%;
 	background-color: white;
 	text-align: center;
+	/*border-bottom: 3px solid rgba(0,0,0,0.05);*/
+}
+
+#header img{
+	width: 25%;
 }
 
 #header * {
@@ -111,6 +131,7 @@ input[type="text"], input[type="password"]{
 }
 
 .btn {
+	z-index: 5;
 	display: block;
 	position: fixed;
 	float: left;
@@ -160,6 +181,7 @@ nav {
 	height: 100%;
 	padding: 0 0 0 0;
 	background: #3b3732;
+	z-index: 5;
  
   -webkit-transition: left 0.5s;
      -moz-transition: left 0.5s;
@@ -237,8 +259,7 @@ nav {
 }
 
 #topbar{
-	border-top: 1px solid #777;
-	margin-top: 10px;
+	margin-top: 0px;
 }
 
 #topbar h4{
@@ -247,6 +268,26 @@ nav {
 	font-weight: 300;
 	text-transform: uppercase;
 	letter-spacing: 3px;
+}
+
+
+#loggInn{
+	background-color: #2ecc71;
+	width: 110.5px;
+}
+
+#registrer{
+	background-color: #2980b9;
+	width: 110.5px;
+}
+
+
+#loginForm{
+	text-align: center;
+}
+
+#registreringForm{
+	text-align: center;
 }
 
 /*
@@ -285,31 +326,40 @@ textarea {overflow: auto;}
 
 #main {
 	width: 100%;
-	background-color: #6D9DD1;
-	padding: 20px;
+	background: #fff;
 }
 
 #main *{
-	color: black;
-}
-
-#main2{
-	width: 100%;
-	background-color: #E73F3F;
-	padding: 20px;
-}
-
-#main3{
-	width: 100%;
-	background-color: #F76C27;
-	padding: 20px;
+	margin-top: 0px;
+	padding: 10px;
 }
 
 .tekstfelt{
 	max-width: 640px;
 	margin: 0 auto;
 	font-weight: 300;
-	min-height: 290px;
+	min-height: 350px;
+}
+
+/*info*/
+
+#info{
+	width: 100%;
+	margin: auto;
+	color: white;
+	position: relative;
+	text-align: center;
+}
+
+#info p{
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
+	color: white;
+	font-size: 8pt;
+	margin: 0px;
+}
+
+.rute img{
+	width: 40%;
 }
 
 /*
@@ -415,9 +465,10 @@ left: 500px;
 
 #footer {
 	text-align: center;
-	padding: 50px 0;
-	background-color: rgb(50, 50, 50);
+	padding: 25px 0;
+	background-color: #ecf0f1;
 	overflow: hidden;
+	/*border-top: 3px solid rgba(0,0,0,0.05);*/
 }
 
 #footer div{
@@ -425,6 +476,10 @@ left: 500px;
 	margin: 0 auto;
 	width: 100%;
 	height: 100%;
+}
+
+#footer div *{
+	color: black;
 }
 
 #sendMelding{
@@ -456,4 +511,52 @@ left: 500px;
         height: 100%;
         overflow: scroll;
     }
+}
+
+/* Slider */
+#owl-demo{
+	width: 100%;
+}
+
+#owl-demo .item{
+    display: block;
+    width: 100%;
+}
+
+#slide1{
+	height: 300px;
+	background-color: #e74c3c;
+}
+
+#slide2{
+	height: 300px;
+	background-color: #f39c12;
+}
+
+#slide3{
+	height: 300px;
+	background-color: #f1c40f;
+}
+
+#slide4{
+	height: 300px;
+	background-color: #3498db;
+}
+
+#slide5{
+	height: 300px;
+	background-color: #8e44ad;
+}
+
+@media only screen and (min-width: 650px){
+	#info p{
+		font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
+		color: white;
+		font-size: 13pt;
+		margin: 0px;
+	}
+
+	#info{
+		width: 80%;
+	}
 }
