@@ -54,6 +54,7 @@ p{
 	color: white;
 	font-size: 13pt;
 	margin: 0px;
+	text-align: center;
 }
 
 a{
@@ -558,5 +559,6 @@ left: 500px;
 
 	#info{
 		width: 80%;
+		text-align: center;
 	}
 }
