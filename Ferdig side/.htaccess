@@ -1,0 +1,5 @@
+AuthName "My Protected Area"
+AuthType Basic
+AuthUserFile /customers/0/e/e/informasjonsteknologi.org/httpd.www/.htpasswd
+AuthGroupFile /dev/null
+require valid-user
