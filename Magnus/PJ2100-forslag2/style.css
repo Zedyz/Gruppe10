@@ -39,7 +39,7 @@ h2{
 
 h3{
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
-	color: rgb(150,150,150);
+	color: rgb(200,200,200);
 	font-size: 15pt;
 	font-weight: 300;
 	text-transform: uppercase;
@@ -51,7 +51,7 @@ h3{
 
 p{
 	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
-	color: white;
+	color: white!important;
 	font-size: 13pt;
 	margin: 0px;
 	text-align: center;
@@ -104,7 +104,10 @@ input[type="text"], input[type="password"]{
 	width: 20%;
 	text-align: center;
 	display: inline-block;
-	margin-top: 30px;
+}
+
+.rute *{
+	margin-top: 20px;
 }
 
 #header {
@@ -170,6 +173,75 @@ input[type="text"], input[type="password"]{
 	letter-spacing: 3px;
 	padding: 30px;
 }
+
+/* Slide 5 */
+
+#utvalgWrapper{
+	width: 100%;
+	position: relative;
+	font-size: 0;
+}
+
+.utvalg{
+	display: inline-block;
+	width: 5.88%;
+	text-align: center;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, 'Lucida Grande', arial, Sans-serif;
+	font-size: 13pt;
+}
+
+.utvalgname{
+	width: 80%;
+	margin: auto;
+}
+
+.utvalgname:hover{
+	opacity: 0.7;
+}
+
+.utvalginfo {
+	padding: 1em; 
+	position: absolute;
+	height: 300px;
+	top: 50px;
+	left: 0;
+	right: 0;
+	display: none;
+	background-color: rgb(41, 128, 185);
+	font-size: 12px;
+}
+
+#lmKnapp{
+	border:none;
+	border-radius: 4px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition:border .25s linear, color, .25s linear, background-color .25s linear;
+	transition:border .25s linear, color, .25s linear, background-color .25s linear;
+	width: 150px;
+	margin: auto;
+	margin-top: 10px;
+	background-color: #f1c40f;
+	text-decoration: none;
+	-webkit-transition: 0.25s;
+	transition: 0.25s;
+}
+
+.lmKnapp{
+	height: 30px;
+	display: block;
+	line-height: 30px;
+}
+
+#lmKnapp:hover,
+#lmKnapp:focus{
+	background-color: #f5d313;
+}
+
+#lmKnapp:active{
+	background: #cda70d;
+}
+
+/* navigasjonsbar */
 
 nav {
 	/* box-shadow: 1px 0 10px 0; */
@@ -282,7 +354,6 @@ nav {
 
 #loginForm{
 	text-align: center;
-	margin-top: 30px;
 }
 
 #registreringForm{
@@ -347,6 +418,7 @@ textarea {overflow: auto;}
 	margin: auto;
 	color: white;
 	text-align: center;
+	height: 225px;
 }
 
 #info p{
@@ -412,6 +484,8 @@ left: 500px;
 
 */
 
+/*
+
 #boxWrapper div:hover{
 	opacity: 0.7;
 }
@@ -460,6 +534,8 @@ left: 500px;
 #box5{
 	background-color: #7E45D3;
 }
+
+*/
 
 #footer {
 	text-align: center;
@@ -514,35 +590,37 @@ left: 500px;
 /* Slider */
 #owl-demo{
 	width: 100%;
+	color: white;
 }
 
 #owl-demo .item{
     display: block;
     width: 100%;
+    padding: 3em 0; 
 }
 
 #slide1{
-	height: 300px;
+	height: 400px;
 	background-color: #e74c3c;
 }
 
 #slide2{
-	height: 300px;
+	height: 400px;
 	background-color: #f39c12;
 }
 
 #slide3{
-	height: 300px;
+	height: 400px;
 	background-color: #f1c40f;
 }
 
 #slide4{
-	height: 300px;
+	height: 400px;
 	background-color: #3498db;
 }
 
 #slide5{
-	height: 300px;
+	height: 400px;
 	background-color: #8e44ad;
 }
 
