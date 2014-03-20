@@ -1,13 +1,20 @@
 <?php
 require 'system/objekter.php';
 $general->logged_out_protect();
+$id = $_SESSION['id'];
+
+if (isset($_POST['submit'])) {
+
+        $utvalgnavn = $_POST['utvalgnavn'];
+ 
+	
+		$users->meldut($id, $utvalgnavn);
+		header('Location: profil.php');
+		exit();
+	}
 
 
 		?>
-
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +22,7 @@ $general->logged_out_protect();
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Westerdals</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/hjem.ico">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
 	<link href="Owl/owl.carousel.css" rel="stylesheet">
@@ -26,11 +34,11 @@ $general->logged_out_protect();
 <nav class="col-first">
 <label class="labeltekst"><h2>Westerdals</h2></label>
   <ul id="nav">
-    <li><a id="nav1" class="navClass" href="hovedside.php"><img src="img/home.png">Hjem</a></li>
-    <li><a id="nav2" class="navClass" href="profil.php"><img src="img/wrench.png">Din profil</a></li>
-    <li><a id="nav3" class="navClass" href="meld.php"><img src="img/wrench.png">Meld deg på utvalg</a></li>
-    <li><a id="nav4" class="navClass" href="info.php"><img src="img/th-list.png">utvalgsinfo</a></li>
-    <!--<li><a id="nav4" class="navClass" href="#footer"><img src="img/envelope-alt.png">Label</a></li>-->
+    <li><a id="nav1" class="navClass" href="hjem.php"><img src="img/home.png">Hjem</a></li>
+    <li><a id="nav2" class="navClass" href="profil.php"><img src="img/wrench.png">Profil</a></li>
+    <li><a id="nav2" class="navClass" href="aktiviteter.php"><img src="img/wrench.png">Lag nytt event</a></li>
+    <li><a id="nav2" class="navClass" href="aktiviteteroversikt.php"><img src="img/wrench.png">Eventoversikt</a></li>
+    <li><a id="nav3" class="navClass" href="logout.php" onclick='reloadPage()'><img src="img/wrench.png">Logg ut</a></li>
   </ul>
 </nav>
  
@@ -41,18 +49,78 @@ $general->logged_out_protect();
     </header>
   </div>
 
-<div id="header"><a href="hovedside.php"><img src="Logo/westerdals2.png"></img></a><h1>Westerdals</h1></div>
+<div id="header"><a href="index.php"><img src="Logo/westerdals2.png"></img></a><h1>Westerdals</h1></div>
 	
 </div>
-	<h1 style="color:black">Profilside</h1>
-<section  class="teksfelt" id="footer">
-	<div>
-	<a href='logout.php' onclick='reloadPage()'><p>logg ut</p></a>
-	<h1>Kontakt oss</h1>
-	Epost-adresse</p>
-	<div id="sendMelding"><a href="kontakt.php"><img src="img/envelope-alt.png" class="img"></a></div>
+<div id="profil">
+    <div id="profilbildeboks"><img src="profilbilde.png" id="profilbilde"></img></div>
+	<?php
+	    
+	$info = $users->getUsername($id);
+	
+	$fakultet = $users->getUtvalg($id);
+	
+	echo "Velkommen ";
+	
+	foreach($info as $item):
+      echo ''.$item['username'].', ';
+     endforeach;
+	
+	
+	
+	echo " fra fakultetet for ";
+	
+	foreach($fakultet as $fak):
+	          
+	          if($fak === 'kommunikasjon' || $fak === 'ledelse' || $fak === 'musikk og scene' || $fak === 'teknologi' || $fak === 'film og TV')   {
+	          
+	          echo '' . $fak . ', ';
+	          
+	      }
+	        endforeach;
+	
+	
+     
+     echo "<br><br><br>Du er medlem av følgende utvalg: ";
+	
+	$utvalg = $users->getUtvalg($id);
+	
+	
+	
+	foreach($utvalg as $ut):
+	    
+	    if($ut === 'westerbar' || $ut === 'lol' || $ut === 'pus' || $ut === 'pum' || $ut === 'utv' || $ut === 'ufsg' || $ut === 'au'   ||
+	       $ut === 'sos' || $ut === 'kit' || $ut === 'aug' || $ut === 'wtvg' || $ut === 'idrettsutvalget' || $ut === 'tom' || $ut === 'mat' || $ut === 'bok' || $ut === 'mus' || $ut === 'wbde')   {
+	        
+	        echo '' . $ut . ', ';
+	      } 
+	      
+	      endforeach;
+	      
+	      
+	  echo '<br><br><br><br><br><br>Aktiviteter du deltar på: ';
+	  
+	  $aktivID = $users->getAktivitetNavn($id);
+	  
+	  foreach($aktivID as $ider):
+	      
+	        
+	        echo  '<br>' .$ider['aktivitetnavn'];
+	      
+	      endforeach;
+	      
+	      
+	  
+	
+	
+	?>
+	<br><br>
+	<form method="post" action="profil.php">
+				<input id="meldav" type="text" name="utvalgnavn" value="Utvalgsnavn..."><br>
+				<input type="submit" name="submit" value="Meld deg av!">
+			</form>
 	</div>
-</section>
+	<div>
 </div>
 
 </body>

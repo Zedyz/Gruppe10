@@ -1,7 +1,7 @@
 <?php
     require 'system/objekter.php';
-    $general->logged_out_protect();
     session_destroy();
+    $general->logged_in_protect();
     
 ?>
 

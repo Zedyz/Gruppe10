@@ -7,7 +7,7 @@ class General{
 
 	public function logged_in_protect() {
 		if ($this->logged_in() === true) {
-			header('Location: hovedside.php');
+			header('Location: hjem.php');
 			exit();		
 		}
 	}
@@ -18,4 +18,6 @@ class General{
 			exit();
 		}	
 	}
+	
+
 }

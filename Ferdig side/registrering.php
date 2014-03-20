@@ -16,8 +16,8 @@ if (isset($_POST['submit'])) {
         if(!ctype_alnum($_POST['username'])){
             $errors[] = 'Bruk kun bokstaver eller tall';	
         }
-        if (strlen($_POST['password']) <6){
-            $errors[] = 'Minst 6 tegn';
+        if (strlen($_POST['password']) <1){
+            $errors[] = 'Minst 1 tegn';
         } else if (strlen($_POST['password']) >15){
             $errors[] = 'ikke mer enn 15 tegn';
         }
@@ -28,9 +28,10 @@ if (isset($_POST['submit'])) {
 		
 		$username 	= htmlentities($_POST['username']);
 		$password 	= $_POST['password'];
+		$epost = $_POST['epost'];
 
-		$users->register($username, $password);
-		header('Location: registrering.php?success');
+		$users->register($username, $password, $epost);
+		header('Location: index.php');
 		exit();
 	}
 }
@@ -44,6 +45,7 @@ if (isset($_POST['submit'])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Westerdals</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="img/hjem.ico">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,500,600,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -52,10 +54,7 @@ if (isset($_POST['submit'])) {
 <nav class="col-first">
 <label class="labeltekst"><h2>Westerdals</h2></label>
   <ul id="nav">
-    <li><a id="nav1" class="navClass" href="#"><img src="img/home.png">Hjem</a></li>
-    <li><a id="nav2" class="navClass" href="#"><img src="img/wrench.png">Alle Utvalg</a></li>
-    <li><a id="nav3" class="navClass" href="#"><img src="img/th-list.png">Label</a></li>
-    <li><a id="nav4" class="navClass" href="#footer"><img src="img/envelope-alt.png">Label</a></li>
+    <li><a id="nav1" class="navClass" href="index.php"><img src="img/home.png">Hjem</a></li>
   </ul>
 </nav>
  
@@ -72,6 +71,8 @@ if (isset($_POST['submit'])) {
 <form id="registreringForm" method="post" action="">
 				<div><input id="brukernavn" type="text" name="username" placeholder="Brukernavn"></div>
 				<div><input id="passord" type="password" name="password" placeholder="Passord"></div>
+				<div><input id="epost" type="text" name="epost" placeholder="epost"></div>
+				
 				<input id="registrer" class="submit" type="submit" name="submit" value="Registrer">
 			</form>
 </div></div>
